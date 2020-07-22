@@ -1,0 +1,33 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">All</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>961799ea-0c53-4f9d-a2e2-16178a13f199</ProjectGuid>
+    <OutputType>msi</OutputType>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>iFocus Installer.aip</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <IsWindowsApplication>True</IsWindowsApplication>
+    <AssemblyName>iFocus Installer</AssemblyName>
+    <Name>iFocus Installer</Name>
+    <RootNamespace>iFocus Installer</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DefaultBuild' " />
+  <ItemGroup>
+    <Compile Include="iFocus Installer.aip">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TobiiForm\TobiiForm.csproj">
+      <Name>TobiiForm</Name>
+      <Project>{af573253-bed9-4a49-b5ce-5de6b6a3cb4c}</Project>
+      <Private>True</Private>
+      <OutputsToImport>PrimaryOutput;References</OutputsToImport>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Condition="'$(AdvancedInstallerMSBuildTargets)' != ''" Project="$(AdvancedInstallerMSBuildTargets)\AdvInstExtTasks.Targets" />
+  <Import Condition="'$(AdvancedInstallerMSBuildTargets)' == ''" Project="$(MSBuildExtensionsPath32)\Caphyon\Advanced Installer\AdvInstExtTasks.Targets" />
+</Project>
